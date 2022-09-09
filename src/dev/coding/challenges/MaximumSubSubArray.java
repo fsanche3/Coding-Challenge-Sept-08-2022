@@ -24,22 +24,22 @@ public class MaximumSubSubArray {
 	}
 	
 	static int MaxSubArray(int[] arr) {
-		int mid, sum1 = 0;
-		int sum2 = 0;
 
+		int max = 0;
+		int sum = arr[0];
 		
-		 mid = arr.length / 2;
-		
-		for(int i = 0; i < arr.length - 1; i ++) {
-			for(int j = i; j < arr.length; j ++) {
-				sum2 = sum2+ arr[j];
-				if(sum1 < sum2) {
-					sum1 = sum2;
-				}
+		for(int i = 1; i < arr.length; i++) {
+			
+			if(sum < 0) {
+				sum = arr[i];
+			} else {
+				sum += arr[i];
 			}
+			
+			max = Math.max(sum, max);
 		}
-		return sum1;
 		
+		return max;	
 	}
 
 }
